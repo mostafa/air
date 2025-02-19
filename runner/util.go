@@ -231,11 +231,15 @@ func derefLink(path string) (string, error) {
 		return path, nil
 	}
 
-	targetPath, err := os.Readlink(path)
+	targetPath, err := filepath.EvalSymlinks(path)
 	if err != nil {
 		return "", err
 	}
-	return targetPath, nil
+	absTargetPath, err := filepath.Abs(targetPath)
+	if err != nil {
+		return "", err
+	}
+	return absTargetPath, nil
 }
 
 func expandPath(path string) (string, error) {
