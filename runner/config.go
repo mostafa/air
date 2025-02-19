@@ -291,6 +291,11 @@ func (c *Config) preprocess() error {
 	if err != nil {
 		return err
 	}
+	c.Root, err = derefLink(c.Root)
+	if err != nil {
+		return err
+	}
+
 	if c.TmpDir == "" {
 		c.TmpDir = "tmp"
 	}
