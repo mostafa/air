@@ -53,3 +53,8 @@ docker-image:
 .PHONY: push-docker-image
 push-docker-image:
 	docker push cosmtrek/air:$(AIRVER)
+
+# https://groups.google.com/g/golang-nuts/c/FrWNhWsLDVY/m/CVd_iRedBwAJ
+update-direct-deps:
+	@go list -f '{{if not (or .Main .Indirect)}}{{.Path}}{{end}}' -m all | xargs -n1 go get
+	@go mod tidy
