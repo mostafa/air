@@ -1,10 +1,12 @@
 package runner
 
 import (
+	"bufio"
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -240,6 +242,15 @@ func derefLink(path string) (string, error) {
 		return "", err
 	}
 	return absTargetPath, nil
+}
+
+func copyOutput(dst io.Writer, src io.Reader) {
+	scanner := bufio.NewScanner(src)
+	for scanner.Scan() {
+		if _, err := dst.Write([]byte(scanner.Text() + "\n")); err != nil {
+			log.Printf("Error writing to output: %v\n", err)
+		}
+	}
 }
 
 func expandPath(path string) (string, error) {
