@@ -1,6 +1,6 @@
 # :cloud: Air - Live reload for Go apps
 
-[![Go](https://github.com/air-verse/air/actions/workflows/release.yml/badge.svg)](https://github.com/air-verse/air/actions?query=workflow%3AGo+branch%3Amaster) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dcb95264cc504cad9c2a3d8b0795a7f8)](https://www.codacy.com/gh/air-verse/air/dashboard?utm_source=github.com&utm_medium=referral&utm_content=air-verse/air&utm_campaign=Badge_Grade) [![Go Report Card](https://goreportcard.com/badge/github.com/air-verse/air)](https://goreportcard.com/report/github.com/air-verse/air) [![codecov](https://codecov.io/gh/air-verse/air/branch/master/graph/badge.svg)](https://codecov.io/gh/air-verse/air)
+[![Go](https://github.com/mostafa/air/actions/workflows/release.yml/badge.svg)](https://github.com/mostafa/air/actions?query=workflow%3AGo+branch%3Amaster) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dcb95264cc504cad9c2a3d8b0795a7f8)](https://www.codacy.com/gh/air-verse/air/dashboard?utm_source=github.com&utm_medium=referral&utm_content=air-verse/air&utm_campaign=Badge_Grade) [![Go Report Card](https://goreportcard.com/badge/github.com/mostafa/air)](https://goreportcard.com/report/github.com/mostafa/air) [![codecov](https://codecov.io/gh/air-verse/air/branch/master/graph/badge.svg)](https://codecov.io/gh/air-verse/air)
 
 ![air](docs/air.png)
 
@@ -30,12 +30,12 @@ Note: This tool has nothing to do with hot-deploy for production.
 
 Support air config fields as arguments:
 
-You can view the available command-line arguments by running the following commands:  
+You can view the available command-line arguments by running the following commands:
 
 ```
 air -h
 ```
-or  
+or
 ```
 air --help
 ```
@@ -59,7 +59,7 @@ air --build.cmd "go build -o bin/api cmd/run.go" --build.bin "./bin/api" --build
 With go 1.24 or higher:
 
 ```bash
-go install github.com/air-verse/air@latest
+go install github.com/mostafa/airatest
 ```
 
 ### Via install.sh
@@ -78,10 +78,10 @@ air -v
 
 ```shell
 # binary will be /usr/local/bin/air
-curl -sSfL https://goblin.run/github.com/air-verse/air | sh
+curl -sSfL https://goblin.run/github.com/mostafa/air sh
 
 # to put to a custom path
-curl -sSfL https://goblin.run/github.com/air-verse/air | PREFIX=/tmp sh
+curl -sSfL https://goblin.run/github.com/mostafa/air PREFIX=/tmp sh
 ```
 
 ### Docker/Podman
@@ -223,7 +223,7 @@ FROM golang:1.24-alpine
 
 WORKDIR /app
 
-RUN go install github.com/air-verse/air@latest
+RUN go install github.com/mostafa/airatest
 
 COPY go.mod go.sum ./
 RUN go mod download
@@ -260,11 +260,11 @@ export PATH=$PATH:$(go env GOPATH)/bin #Confirm this line in your .profile and m
 
 ### Error under wsl when ' is included in the bin
 
-Should use `\` to escape the `'` in the bin. related issue: [#305](https://github.com/air-verse/air/issues/305)
+Should use `\` to escape the `'` in the bin. related issue: [#305](https://github.com/mostafa/airssues/305)
 
 ### Question: how to do hot compile only and do not run anything?
 
-[#365](https://github.com/air-verse/air/issues/365)
+[#365](https://github.com/mostafa/airssues/365)
 
 ```toml
 [build]
@@ -273,7 +273,7 @@ Should use `\` to escape the `'` in the bin. related issue: [#305](https://githu
 
 ### How to Reload the Browser Automatically on Static File Changes
 
-Refer to issue [#512](https://github.com/air-verse/air/issues/512) for additional details.
+Refer to issue [#512](https://github.com/mostafa/airssues/512) for additional details.
 
 - Ensure your static files in `include_dir`, `include_ext`, or `include_file`.
 - Ensure your HTML has a `</body>` tag

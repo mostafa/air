@@ -10,7 +10,7 @@ import (
 	"runtime/debug"
 	"syscall"
 
-	"github.com/air-verse/air/runner"
+	"github.com/mostafa/air/runner"
 )
 
 var (
@@ -73,8 +73,8 @@ func GetVersionInfo() versionInfo { //revive:disable:unexported-return
 func printSplash() {
 	versionInfo := GetVersionInfo()
 	fmt.Printf(`
-  __    _   ___  
- / /\  | | | |_) 
+  __    _   ___
+ / /\  | | | |_)
 /_/--\ |_| |_| \_ %s, built with Go %s
 
 `, versionInfo.airVersion, versionInfo.goVersion)
