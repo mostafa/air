@@ -267,7 +267,7 @@ func inferEntrypoint() string {
 	if _, err := os.Stat("./main.go"); err == nil {
 		return entrypoint
 	}
-	filepath.Walk(".", func(path string, info fs.FileInfo, err error) error {
+	err := filepath.Walk(".", func(path string, info fs.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -277,6 +277,9 @@ func inferEntrypoint() string {
 		}
 		return nil
 	})
+	if err != nil {
+		return entrypoint
+	}
 
 	// default to . if no main.go is found anywhere in the tree
 	return entrypoint
